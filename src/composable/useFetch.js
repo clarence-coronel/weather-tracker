@@ -31,7 +31,7 @@ export default function useFetch() {
       return processedData;
     } catch (error) {
       console.error(error);
-      return [];
+      return { filtered: null, raw: null };
     } finally {
       isPending.value = false;
     }

@@ -29,6 +29,7 @@
           class="w-full bg-white rounded-md h-10 flex p-2"
         >
           <input
+            ref="inputField"
             v-model="city"
             placeholder="Enter a City..."
             type="text"
@@ -101,6 +102,7 @@ const { getData, isPending } = useFetch();
 const mode = ref("CELSIUS");
 const city = ref("");
 const data = ref(null);
+const inputField = ref(null);
 const emit = defineEmits(["updateData", "dataLoading", "modeChanged"]);
 
 watch(isPending, () => {
@@ -117,6 +119,8 @@ const toggleMode = () => {
 
 const updateData = async () => {
   data.value = await getData(city.value);
+  city.value = "";
+  inputField.value.blur();
   emit("updateData", data.value);
 };
 
