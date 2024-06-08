@@ -43,7 +43,10 @@
           </div>
         </div>
       </div>
-      <div v-else class="p-5 h-40 flex justify-center items-center">
+      <div
+        v-else-if="!weatherData && !isLoading"
+        class="p-5 h-40 flex justify-center items-center"
+      >
         <h1 class="text-5xl font-bold text-neutral-600">No city found :(</h1>
       </div>
     </div>
